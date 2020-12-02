@@ -1,0 +1,9 @@
+# Byte-compiled / optimized / DLL files
+scripts/__pycache__/
+*.py[cod]
+*$py.class
+
+# data
+anonymized.wav
+work/
+README.pdf
