@@ -1,5 +1,5 @@
 # Lightweight speaker anonymization [IEEE SLT2021]
-This recipe optimizes parameters of voice modification modules `M(*)` for speaker anonymization. Given training data (speech, text, speaker label), this recipe estimates the best parameters that minimize `I_obj` consisting of WER (word error rate) and negative EER (equal error rate). 
+This recipe optimizes parameters of voice modification modules `M(*)` for speaker anonymization. Given training data (speech, text, speaker label), this recipe estimates the parameters that minimize `I_obj` consisting of WER (word error rate) and negative EER (equal error rate). 
 
 ![flow](flow.png)
 
@@ -33,7 +33,7 @@ You can optimize model parameters using your own ASR (automatic speech recogniti
 ```
 python scripts/optimize.py
 ```
-Before running, please revise `loss_asr()` and `loss_asv()` to use your own ASR and ASV systems for computing WER and EER. These functions implemented in this repository return dummy values. This script loads `data/vctk/*.wav` as training data and saves the optimized parameters to `params/sample.json`. The `hparams` variable in this script lists hyperparameters and cascaded modules. For example, when you uncomment hparams["anon_params"]["mcadas"], the McAdams transformation module will be added to the cascade. The cascade executes modules, following an order in hparams["anon_params"].
+Before running, please revise `loss_asr()` and `loss_asv()` to use your own ASR and ASV systems for computing WER and EER. These functions implemented in this repository return dummy values. This script loads `data/vctk/*.wav` as training data and saves the optimized parameters to `params/sample.json`. The `hparams` variable in this script lists hyperparameters and cascaded modules. For example, when you uncomment hparams["anon_params"]["mcadas"], the McAdams transformation module will be added to the cascade. The cascade executes modules, following an order in `hparams["anon_params"]`.
 
 After optimization, you can drive anonymization as shown above.
 
