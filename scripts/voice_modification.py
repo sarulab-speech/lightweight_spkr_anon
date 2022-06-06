@@ -34,7 +34,7 @@ def vtln(x, coef = 0.):
 
 # resampling
 def resampling(x, coef = 1., fs = 16000):
-  fn_r, fn_w = tempfile.NamedTemporaryFile(mode="r", suffix=".wav"), tempfile.NamedTemporaryFile(mode="w", suffix=".wav")  
+  fn_r, fn_w = tempfile.NamedTemporaryFile(mode="r", suffix=".wav",delete=False), tempfile.NamedTemporaryFile(mode="w", suffix=".wav",delete=False)  
 
   sf.write(fn_r.name, x, fs, "PCM_16")
   with WavReader(fn_r.name) as fr:
